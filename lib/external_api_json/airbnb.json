@@ -1,0 +1,16 @@
+// might need some versioning
+{
+  "start_date": "start_date",
+  "end_date": "end_date",
+  "nights": "",
+  "guests": "guest_details.total",
+  "adults": "guest_details.adults",
+  "children": "guest_details.children",
+  "infants": "guest_details.infants",
+  "guest": "",
+  "payout_price": "payout_price",
+  "security_price": "security_price",
+  "total_price": "total_price",
+  "currency": "currency",
+  "status": "status"
+}

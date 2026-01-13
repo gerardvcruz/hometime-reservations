@@ -1,0 +1,18 @@
+// might need some versioning
+{
+  "start_date": "start_date",
+  "end_date": "end_date",
+  "expected_payout_amount": "payout_price",
+  "guest_details": "",
+  "guest_email": "guest.email",
+  "guest_first_name": "guest.first_name",
+  "guest_id": "guest.id",
+  "guest_last_name": "guest.last_name",
+  "guest_phone_numbers": "guest.phone_numbers",
+  "listing_security_price_accurate": "security_price",
+  "host_currency": "currency",
+  "nights": "",
+  "number_of_guests": "",
+  "status_type": "status",
+  "total_paid_amount_accurate": "total_price"
+}
