@@ -3,7 +3,10 @@ class ReservationsController < ApplicationController
 
   def create
     if @reservation.save
-      render json: @reservation, status: 200
+      render json: {
+        reservation: @reservation,
+        guest: @guest
+      }, status: 201
     else
       render json: @reservation.errors, status: 400
     end

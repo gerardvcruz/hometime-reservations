@@ -1,8 +1,8 @@
 class ReservationDeserializer
   def initialize(params)
     @reservation = Reservation.new
-    # flatten top level reservation hash
-    @params = params.merge(params.delete("reservation"))
+    # flatten top level reservation hash if exists
+    @params = params.merge(params.delete("reservation") || {})
     @params_keys = @params.keys - ["controller", "action"]
     @external_api_json_files = Dir["#{Rails.root}/lib/external_api_json/*.json"].each { |x| File.file?("lib/#{x}") }
   end
