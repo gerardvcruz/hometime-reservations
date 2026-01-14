@@ -1,5 +1,6 @@
 class Guest < ApplicationRecord
   has_many :reservations
+  validates :email, presence: true
 
   def self.find_or_register_by_reservation(reservation)
     guest = Guest.find_or_create_by(email: reservation.guest.email) do |guest|

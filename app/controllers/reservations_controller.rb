@@ -18,8 +18,10 @@ class ReservationsController < ApplicationController
       @reservation = Reservation.deserialize_params(params.to_unsafe_h)
       @guest = Guest.find_or_register_by_reservation(@reservation)
 
-      if @guest
+      if @guest.id
         @reservation.guest_id = @guest.id
+      else
+        render json: @guest.errors, status: 400
       end
     rescue StandardError => e
       render json: { error: e }, status: 400
