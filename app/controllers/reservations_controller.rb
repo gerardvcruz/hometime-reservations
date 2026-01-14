@@ -12,8 +12,12 @@ class ReservationsController < ApplicationController
   private
   def deserialize_params
     begin
-      # rails automatically wraps the incoming payload with :reservation
       @reservation = Reservation.deserialize_params(params.to_unsafe_h)
+      @guest = Guest.find_or_register_by_reservation(@reservation)
+
+      if @guest
+        @reservation.guest_id = @guest.id
+      end
     rescue StandardError => e
       render json: { error: e }, status: 400
     end

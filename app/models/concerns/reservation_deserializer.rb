@@ -37,25 +37,33 @@ class ReservationDeserializer
       "total": @params[:adults] + @params[:children] + @params[:infants]
     }
 
-    @reservation.guest_id = @params[:guest][:id]
+    @reservation.guest = Guest.new(
+      email: @params[:guest][:email],
+      first_name: @params[:guest][:first_name],
+      last_name: @params[:guest][:last_name],
+      phone_numbers: [@params[:guest][:phone]]
+    )
 
     @reservation
   end
 
   def parse_booking_com
     @reservation.guest_details = {
-      "adults": @params[:number_of_adults],
-      "children": @params[:number_of_children],
-      "infants": @params[:number_of_infants],
-      "total": @params[:number_of_adults] + @params[:number_of_children] + @params[:number_of_infants]
+      "adults": @params[:guest_details][:number_of_adults],
+      "children": @params[:guest_details][:number_of_children],
+      "infants": @params[:guest_details][:number_of_infants],
+      "total": @params[:guest_details][:number_of_adults] +
+        @params[:guest_details][:number_of_children] +
+        @params[:guest_details][:number_of_infants]
     }
 
-    @reservation.guest_id = @params[:guest_id]
+    @reservation.guest = Guest.new(
+      email: @params[:guest_email],
+      first_name: @params[:guest_first_name],
+      last_name: @params[:guest_last_name],
+      phone_numbers: @params[:guest_phone_numbers]
+    )
 
     @reservation
   end
-
-  # can add new parsing methods when new service is introduced
-  # def parse_new_api_service
-  # end
 end
